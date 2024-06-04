@@ -1,0 +1,27 @@
+.box-title{
+    padding-top: 10px;
+}
+
+.button-down{
+    margin-top: 20px;
+}
+
+.shop-button{
+    display: inline-block;
+}
+
+.btn{
+    border-radius: 5px;
+}
+
+.fa-edit{
+    color: #f39c12;
+}
+
+.fa-eye{
+    color: darkblue;
+}
+
+.box{
+    border-radius: 10px;
+}

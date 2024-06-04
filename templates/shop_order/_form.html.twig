@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_label(form.orderNumber) }}
+    {{ form_widget(form.orderNumber) }}
+    {{ form_errors(form.orderNumber) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.deliveryAddress) }}
+    {{ form_widget(form.deliveryAddress) }}
+    {{ form_errors(form.deliveryAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.total) }}
+    {{ form_widget(form.total) }}
+    {{ form_errors(form.total) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.discount) }}
+    {{ form_widget(form.discount) }}
+    {{ form_errors(form.discount) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.grandTotal) }}
+    {{ form_widget(form.grandTotal) }}
+    {{ form_errors(form.grandTotal) }}
+</div>
+<div class="form-group">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}

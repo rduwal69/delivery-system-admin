@@ -1,0 +1,74 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_label(form.shopName, 'Name') }}
+    {{ form_widget(form.shopName) }}
+    {{ form_errors(form.shopName) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.shopFirstAddress, 'Address') }}
+    {{ form_widget(form.shopFirstAddress) }}
+    {{ form_errors(form.shopFirstAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.shopSecondAddress, 'Optional Address 1') }}
+    {{ form_widget(form.shopSecondAddress) }}
+    {{ form_errors(form.shopSecondAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.shopThirdAddress, 'Optional Address 2') }}
+    {{ form_widget(form.shopThirdAddress) }}
+    {{ form_errors(form.shopThirdAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.postcode) }}
+    {{ form_widget(form.postcode) }}
+    {{ form_errors(form.postcode) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.firstPhoneNumber, 'Contact Number') }}
+    {{ form_widget(form.firstPhoneNumber) }}
+    {{ form_errors(form.firstPhoneNumber) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.secondPhoneNumber, 'Optional Ph. Number') }}
+    {{ form_widget(form.secondPhoneNumber) }}
+    {{ form_errors(form.secondPhoneNumber) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.emailAddress, 'Email Address') }}
+    {{ form_widget(form.emailAddress) }}
+    {{ form_errors(form.emailAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.password) }}
+    {{ form_widget(form.password) }}
+    {{ form_errors(form.password) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.primaryContact) }}
+    {{ form_widget(form.primaryContact) }}
+    {{ form_errors(form.primaryContact) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.status) }}
+    {{ form_widget(form.status) }}
+    {{ form_errors(form.status) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.band) }}
+    {{ form_widget(form.band) }}
+    {{ form_errors(form.band) }}
+</div>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

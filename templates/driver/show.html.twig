@@ -1,0 +1,72 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}Driver{% endblock %}
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Driver Detail</h3>
+
+                        <a href="{{ path('driver_index') }}" class="btn bg-navy pull-right">Go Back</a>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ driver.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>DriverName</th>
+                                <td>{{ driver.driverName }}</td>
+                            </tr>
+                            <tr>
+                                <th>EmailAddress</th>
+                                <td>{{ driver.emailAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>FirstPhoneNumber</th>
+                                <td>{{ driver.firstPhoneNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>SecondPhoneNumber</th>
+                                <td>{{ driver.secondPhoneNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Band</th>
+                                <td>{{ driver.band }}</td>
+                            </tr>
+                            <tr>
+                                <th>Zone</th>
+                                <td>{{ driver.zone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{ driver.address }}</td>
+                            </tr>
+                            <tr>
+                                <th>OptionalAddress</th>
+                                <td>{{ driver.optionalAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Postcode</th>
+                                <td>{{ driver.postcode }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="button-down">
+                            <a href="{{ path('driver_edit', {'id': driver.id}) }}" class="btn btn-warning">Edit</a>
+
+                            <span class="pull-right">{{ include('driver/_delete_form.html.twig') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

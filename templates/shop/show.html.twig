@@ -1,0 +1,83 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}Shop{% endblock %}
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Shop Detail</h3>
+
+                        <a href="{{ path('shop_index') }}" class="btn bg-navy pull-right">Back</a>
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ shop.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Shop Name</th>
+                                <td>{{ shop.shopName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{ shop.shopFirstAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address(optional)</th>
+                                <td>{{ shop.shopSecondAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address(optional)</th>
+                                <td>{{ shop.shopThirdAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Postcode</th>
+                                <td>{{ shop.postcode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone No.</th>
+                                <td>{{ shop.firstPhoneNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone No.(optional)</th>
+                                <td>{{ shop.secondPhoneNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email Address</th>
+                                <td>{{ shop.emailAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Password</th>
+                                <td>{{ shop.password }}</td>
+                            </tr>
+                            <tr>
+                                <th>Primary Contact</th>
+                                <td>{{ shop.primaryContact }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ shop.status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Band</th>
+                                <td>{{ shop.band }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="button-down">
+                            <a href="{{ path('shop_edit', {'id': shop.id}) }}" class="btn btn-warning">Edit</a>
+                            <span class="pull-right">{{ include('shop/_delete_form.html.twig') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,64 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_label(form.driverName, 'Name') }}
+    {{ form_widget(form.driverName) }}
+    {{ form_errors(form.driverName) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.emailAddress) }}
+    {{ form_widget(form.emailAddress) }}
+    {{ form_errors(form.emailAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.password) }}
+    {{ form_widget(form.password) }}
+    {{ form_errors(form.password) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.firstPhoneNumber, 'Contact No') }}
+    {{ form_widget(form.firstPhoneNumber) }}
+    {{ form_errors(form.firstPhoneNumber) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.secondPhoneNumber, 'Optional Contact No') }}
+    {{ form_widget(form.secondPhoneNumber) }}
+    {{ form_errors(form.secondPhoneNumber) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.band) }}
+    {{ form_widget(form.band) }}
+    {{ form_errors(form.band) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.zone) }}
+    {{ form_widget(form.zone) }}
+    {{ form_errors(form.zone) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.address) }}
+    {{ form_widget(form.address) }}
+    {{ form_errors(form.address) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.optionalAddress) }}
+    {{ form_widget(form.optionalAddress) }}
+    {{ form_errors(form.optionalAddress) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.postcode) }}
+    {{ form_widget(form.postcode) }}
+    {{ form_errors(form.postcode) }}
+</div>
+<div class="form-group">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,66 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}Shop/Restaurant Lists{% endblock %}
+
+{% block body %}
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="box">
+                <div class="box-header with-border">
+                    <a href="{{ path('shop_new') }}" class="btn bg-maroon margin pull-right">Create new</a>
+                    <h3 class="box-title">Shop List</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Shop Name</th>
+                            <th>Address</th>
+                            <th>Postcode</th>
+                            <th>Phone No.</th>
+                            <th>Email Address</th>
+                            <th>PrimaryContact</th>
+                            <th>Status</th>
+                            <th>Band</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for shop in shops %}
+                            <tr>
+                                <td>{{ shop.id }}</td>
+                                <td>{{ shop.shopName }}</td>
+                                <td>{{ shop.shopFirstAddress }}</td>
+                                <td>{{ shop.postcode }}</td>
+                                <td>{{ shop.firstPhoneNumber }}</td>
+                                <td>{{ shop.emailAddress }}</td>
+                                <td>{{ shop.primaryContact }}</td>
+                                <td>{{ shop.status }}</td>
+                                <td>{{ shop.band }}</td>
+                                <td>
+                                    <a href="{{ path('shop_show', {'id': shop.id}) }}"><i class="fa fa-fw fa-eye"></i></a>|
+                                    <a href="{{ path('shop_edit', {'id': shop.id}) }}"><i class="fa fa-fw fa-edit"></i></a>|
+                                    <a href="{{ path('shop_order_index', {'shop': shop.id}) }}"> OD</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="14">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+{% endblock %}

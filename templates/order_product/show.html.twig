@@ -1,0 +1,47 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}OrderProduct{% endblock %}
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Ordered Product Detail</h3>
+                        <a href="{{ path('order_product_index', {'shop': shop.id, 'shopOrder': shop_order.id, 'id': order_product.id }) }}"
+                           class="btn bg-navy pull-right">Back</a>
+                    </div>
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ order_product.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>ProductName</th>
+                                <td>{{ order_product.productName }}</td>
+                            </tr>
+                            <tr>
+                                <th>ProductQuantity</th>
+                                <td>{{ order_product.productQuantity }}</td>
+                            </tr>
+                            <tr>
+                                <th>ProductPrice</th>
+                                <td>{{ order_product.productPrice }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="button-down">
+                            <a href="{{ path('order_product_edit', {'orderProduct': order_product.id, 'shop': shop.id, 'shopOrder': shop_order.id}) }}"
+                               class="btn btn-warning">Edit</a>
+
+                            <span class="pull-right">{{ include('order_product/_delete_form.html.twig') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

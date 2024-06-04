@@ -1,0 +1,20 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}Edit Shop{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Edit Shop</h3>
+                </div>
+                <div class="box-body">
+                    {{ include('shop/_form.html.twig', {'button_label': 'Update'}) }}
+                </div>
+            </div>
+        </div>
+        <a href="{{ path('shop_index') }}" class="btn bg-navy margin pull-right">Back</a>
+    </div>
+{% endblock %}

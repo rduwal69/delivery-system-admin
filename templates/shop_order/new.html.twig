@@ -1,0 +1,183 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}New RestaurantOrder{% endblock %}
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Add New Order</h3>
+                        <button type="button" class="btn btn-success pull-right" id="add-product">
+                            Add Item
+                        </button>
+                    </div>
+                    <div class="box-body">
+                        <form action="" method="post">
+                            <table id="product-table" class="table table-bordered">
+                                <h5>Product</h5>
+                                <thead>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                                </thead>
+                                <tbody id="product-list">
+
+                                </tbody>
+                            </table>
+                            <br>
+                            <div class="form-group">
+                                <label for="shop_order[orderNumber]">Order Number</label>
+                                <input type="text" class="form-control" id="order_number" name="orderNumber">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shop_order[deliveryAddress]">Delivery Address</label>
+                                <input type="text" class="form-control" id="delivery_address" name="deliveryAddress">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shop_order[total]">Total</label>
+                                <input type="number" class="form-control" id="total" name="total">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shop_order[discount]">Discount</label>
+                                <input type="number" class="form-control" id="discount" name="discount">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shop_order[grandTotal]">Grand Total</label>
+                                <input type="number" class="form-control" id="grand_total" name="grandTotal">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <a href="{{ path('shop_order_index', {'shop': shop.id}) }}" class="btn bg-navy margin pull-right">Back</a>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Product</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="price" class="control-label">Price</label>
+                            <input type="number" class="form-control" id="price" name="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity" class="control-label">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" name="quantity">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" id="product-model-save-btn" value="Save" class="btn btn-primary">
+                    <input type="submit" id="product-model-edit-btn" value="Update" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        var productName = "";
+        var productPrice = 0;
+        var productQuantity = 0;
+        var productTotal = 0;
+
+        $('#add-product').on('click', function () {
+            $('#name').val("")
+            $('#price').val("")
+            $('#quantity').val("")
+            var $myModel = $('#myModal');
+            $myModel.find('#product-model-edit-btn').hide()
+            $myModel.find('#product-model-save-btn').show()
+            $myModel.modal('toggle')
+        });
+
+        var productIndex = 0;
+
+        $('#product-model-save-btn').on('click', function () {
+            productName = $('#name').val()
+            productPrice = $('#price').val()
+            productQuantity = $('#quantity').val()
+            productTotal = productPrice * productQuantity;
+
+            $('#product-list').append(`<tr product-name="${productName}">
+                                <td ><input class="product-name" name="product[${productIndex}][name]" value="${productName}"/> </td>
+                                <td ><input class="product-price" name="product[${productIndex}][price]"  value="${productPrice}" /></td>
+                                <td ><input class="product-quantity" name="product[${productIndex}][quantity]" value="${productQuantity}"/></td>
+                                <td>${productTotal}</td>
+                                <td>
+                                    <button type="button" class="btn btn-success product-model-edit-button"   >
+                                        Edit
+                                    </button>|
+                                    <button type="button" class="btn btn-danger  product-model-delete-button"  >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>`)
+            productIndex++;
+            $('#myModal').modal('hide')
+        });
+
+
+        $('#product-table').on('click', '.product-model-edit-button', function () {
+            var $this = $(this);
+            var $tr = $this.closest("tr");
+            $('#name').val($tr.find('.product-name').val())
+            $('#price').val($tr.find('.product-price').val())
+            $('#quantity').val($tr.find('.product-quantity').val())
+
+            var $myModel = $('#myModal');
+            $myModel.find('#product-model-edit-btn').show()
+            $myModel.find('#product-model-save-btn').hide()
+            $myModel.modal('toggle')
+        })
+
+        $('#product-model-edit-btn').on('click', function () {
+            productName = $('#name').val()
+            productPrice = $('#price').val()
+            productQuantity = $('#quantity').val()
+            productTotal = productPrice * productQuantity;
+
+            $tr = $('#product-table').find(`[product-name=${productName}]`)
+            $tr.find('.product-price').val(productPrice)
+            $tr.find('.product-quantity').val(productQuantity)
+            $tr.val(productTotal)
+
+            $('#myModal').modal('hide')
+        });
+
+
+        $('#product-table').on('click', '.product-model-delete-button', function () {
+            var $this = $(this);
+            var $tr = $this.closest("tr");
+            $tr.remove()
+        })
+
+
+    </script>
+{% endblock %}

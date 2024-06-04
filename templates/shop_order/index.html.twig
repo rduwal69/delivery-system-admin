@@ -1,0 +1,60 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}Shop Order Lists{% endblock %}
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="box">
+                <div class="box-header with-border">
+                    <a href="{{ path('shop_order_new', {'shop': shop.id}) }}"
+                       class="btn bg-maroon margin pull-right">Add New Order</a>
+                    <h3 class="box-title">Order Summary</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Order Number</th>
+                            <th>Date Of Order</th>
+                            <th>Delivery Address</th>
+                            <th>Total</th>
+                            <th>Discount</th>
+                            <th>Grand Total</th>
+                            <th>Shop</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for shop_order in shop_orders %}
+                            <tr>
+                                <td>{{ shop_order.id }}</td>
+                                <td>{{ shop_order.orderNumber }}</td>
+                                <td>{{ shop_order.dateOfOrder ? shop_order.dateOfOrder|date('Y-m-d') : '' }}</td>
+                                <td>{{ shop_order.deliveryAddress }}</td>
+                                <td>{{ shop_order.total }}</td>
+                                <td>{{ shop_order.discount }}</td>
+                                <td>{{ shop_order.grandTotal }}</td>
+                                <td>{{ shop_order.shop.shopName }}</td>
+                                <td>
+                                    <a href="{{ path('shop_order_show', {'shopOrder': shop_order.id, 'shop': shop.id}) }}">Show</a>|
+                                    <a href="{{ path('shop_order_edit', {'shopOrder': shop_order.id, 'shop': shop.id}) }}">Edit</a>|
+{#                                    <a href="{{ path('order_product_index', {'shopOrder': shop_order.id, 'shop': shop.id}) }}">Order Product List</a>#}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
